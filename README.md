@@ -1,47 +1,42 @@
 # 🌾 Rice Shop Order Management System
 
-A Java Full Stack web application developed to simplify rice shop order management. Customers can place rice orders online, and the shop owner can manage orders, update their status, delete cancelled orders, and generate printable invoices.
+A Java Full Stack web application that helps rice shops manage customer orders efficiently. Customers can place rice orders, while owners can view, manage, update, delete, and print invoices through an admin dashboard.
 
 ---
 
-## 📌 Features
+## 🚀 Features
 
 ### 👤 Customer Module
 
-- Enter Customer Name
-- Enter Mobile Number
-- Auto Generate Customer ID
-- Search Rice Types
-- Select Multiple Rice Types
-- Enter Quantity (KG)
-- Enter Number of Bags
-- Automatic Price Calculation
-- View Order Summary
-- Submit Order
+- Register customer details
+- Auto-generated Customer ID
+- Search rice varieties
+- Select multiple rice types
+- Enter quantity and number of bags
+- Automatic price calculation
+- Order summary before submission
+- Submit order
 
 ### 👨‍💼 Owner Module
 
-- Secure Login
-- View All Customer Orders
-- View Order Details
-- Update Order Status
-- Delete Cancelled Orders
-- Generate Printable Invoice
-- Manage Customer Orders
+- Secure owner login
+- View all customer orders
+- View order details
+- Update order status
+- Delete cancelled orders
+- Print customer invoice
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠 Tech Stack
 
 ### Frontend
-
 - HTML5
 - CSS3
 - Bootstrap 5
 - JavaScript
 
 ### Backend
-
 - Java 17
 - Spring Boot
 - Spring MVC
@@ -49,20 +44,14 @@ A Java Full Stack web application developed to simplify rice shop order manageme
 - Hibernate
 
 ### Database
-
 - PostgreSQL
 
-### Build Tool
-
+### Tools
 - Maven
-
-### IDE
-
 - IntelliJ IDEA
-
-### API Testing
-
 - Postman
+- Git
+- GitHub
 
 ---
 
@@ -85,57 +74,17 @@ RiceShop
 
 ---
 
-## 🗄️ Database Tables
+## 🗄 Database Tables
 
 - Customer
 - Rice
-- Order
-- OrderItem
+- Orders
+- Order Items
 - Admin
 
 ---
 
-## 🔗 REST APIs
-
-### Customer
-
-```http
-POST /api/customers
-
-GET /api/customers/{id}
-```
-
-### Rice
-
-```http
-GET /api/rice
-
-GET /api/rice/search?name=
-```
-
-### Orders
-
-```http
-POST /api/orders
-
-GET /api/orders
-
-GET /api/orders/{id}
-
-PUT /api/orders/{id}
-
-DELETE /api/orders/{id}
-```
-
-### Admin
-
-```http
-POST /api/admin/login
-```
-
----
-
-## 🌾 Rice Types
+## 🌾 Available Rice Types
 
 - Seeraga Samba Rice
 - Nattu Ponni Rice
@@ -151,7 +100,41 @@ POST /api/admin/login
 
 ---
 
-## 🚀 Project Workflow
+## 📡 REST API Endpoints
+
+### Customer
+
+```http
+POST /api/customers
+GET  /api/customers/{id}
+```
+
+### Rice
+
+```http
+GET /api/rice
+GET /api/rice/search
+```
+
+### Orders
+
+```http
+POST   /api/orders
+GET    /api/orders
+GET    /api/orders/{id}
+PUT    /api/orders/{id}
+DELETE /api/orders/{id}
+```
+
+### Admin
+
+```http
+POST /api/admin/login
+```
+
+---
+
+## 🔄 Project Workflow
 
 ```text
 Customer
@@ -160,10 +143,10 @@ Customer
 Enter Customer Details
      │
      ▼
-Search & Select Rice
+Search Rice
      │
      ▼
-Choose Quantity & Bags
+Select Quantity & Bags
      │
      ▼
 Price Calculation
@@ -181,39 +164,36 @@ PostgreSQL Database
 Owner Dashboard
      │
      ▼
-View / Delete / Print Invoice
+View • Update • Delete • Print Invoice
 ```
-
----
-
-## 💡 Future Enhancements
-
-- Customer Login
-- Online Payment
-- Stock Management
-- PDF Invoice
-- WhatsApp Notification
-- Email Notification
-- Sales Dashboard
-- Order Tracking
-- GST Calculation
 
 ---
 
 ## 🎯 Learning Outcomes
 
-This project demonstrates:
-
 - Java Full Stack Development
 - Spring Boot REST APIs
-- PostgreSQL Database Integration
-- CRUD Operations
-- MVC Architecture
+- PostgreSQL Integration
 - Spring Data JPA
 - Hibernate ORM
-- RESTful Web Services
-- Order Management System
+- CRUD Operations
+- MVC Architecture
 - Invoice Generation
+- Order Management System
+
+---
+
+## 🔮 Future Enhancements
+
+- Customer Login
+- Online Payment Gateway
+- PDF Invoice Download
+- Stock Management
+- Sales Dashboard
+- WhatsApp Notifications
+- Email Notifications
+- GST Calculation
+- Order Tracking
 
 ---
 
@@ -223,12 +203,10 @@ This project demonstrates:
 
 Java Full Stack Developer
 
----
-
-## 📜 License
-
-This project is developed for educational and portfolio purposes.
+- GitHub: https://github.com/arulprakashs100
 
 ---
 
-⭐ If you like this project, don't forget to **Star** this repository!
+## ⭐ Support
+
+If you found this project useful, consider giving it a **Star ⭐** on GitHub.
