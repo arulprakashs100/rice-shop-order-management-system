@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Receipt - Golden Grain Rice Shop</title>
+    <!-- CSS imports -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/owner.css">
+    <link rel="stylesheet" href="../css/print.css" media="print">
+    <style>
+        /* Extra styling for display preview mode */
+        body {
+            background-color: var(--bg-light);
+            padding: 20px;
+        }
+        
+        .invoice-preview-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .invoice-actions-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            background-color: var(--white);
+            padding: 16px 24px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="invoice-preview-wrapper">
+        <!-- Floating Actions Bar (Hidden during printing via print.css) -->
+        <div class="invoice-actions-bar">
+            <a href="javascript:window.close();" class="btn btn-outline" style="padding: 10px 20px;">
+                Close Window
+            </a>
+            <div style="display: flex; gap: 10px;">
+                <button onclick="window.print();" class="btn btn-primary" style="padding: 10px 24px;">
+                    🖨️ Print Invoice
+                </button>
+            </div>
+        </div>
+
+        <!-- Printable Invoice Container -->
+        <main class="invoice-container" id="printable-invoice">
+            <!-- Header Block -->
+            <header class="invoice-header">
+                <div class="invoice-from">
+                    <div class="logo-container" style="margin-bottom: 8px;">
+                        <img src="../assets/logo.png" alt="Golden Grain Logo" class="logo-img" style="height: 48px;">
+                        <h2 class="logo-text" style="font-size: 28px;">Golden<span>Grain</span></h2>
+                    </div>
+                    <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.4;">
+                        12, Farm Gate Road, Agricultural Hub,<br>
+                        Karnataka, India - 560001<br>
+                        Phone: +91 98765 43210 | info@goldengrainrice.com
+                    </p>
+                </div>
+                <div class="invoice-meta-info">
+                    <h1 class="invoice-title">Invoice</h1>
+                    <p>Invoice No: <span id="invoice-no-val" style="color: var(--primary-dark);">INV-XXXXX</span></p>
+                    <p>Date: <span id="invoice-date-val">July 3, 2026</span></p>
+                    <p>Order ID: <span id="invoice-order-id-val">GS-XXXXX</span></p>
+                </div>
+            </header>
+
+            <!-- Invoice Details Grid -->
+            <section class="invoice-details-grid">
+                <div>
+                    <h3 style="font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700;">Billed To</h3>
+                    <p id="inv-cust-name" style="font-weight: 700; font-size: 16px; margin-bottom: 4px;"></p>
+                    <p id="inv-cust-phone" style="font-weight: 600; margin-bottom: 4px;"></p>
+                    <p id="inv-cust-address" style="font-size: 14px; color: var(--text-muted); line-height: 1.4;"></p>
+                </div>
+                <div style="text-align: right;">
+                    <h3 style="font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700;">Payment Summary</h3>
+                    <p>Payment Mode: <strong id="inv-payment-method">UPI</strong></p>
+                    <p>Payment Status: <strong style="color: var(--primary-dark);">Paid & Confirmed</strong></p>
+                </div>
+            </section>
+
+            <!-- Invoice Item Table -->
+            <table class="order-details-items-table" style="margin-bottom: 30px;">
+                <thead>
+                    <tr>
+                        <th style="padding: 12px 10px;">Item Description</th>
+                        <th style="padding: 12px 10px; text-align: right;">Bag Size</th>
+                        <th style="padding: 12px 10px; text-align: right;">Unit Price</th>
+                        <th style="padding: 12px 10px; text-align: center;">Qty</th>
+                        <th style="padding: 12px 10px; text-align: right;">Total Price</th>
+                    </tr>
+                </thead>
+                <tbody id="invoice-items-rows">
+                    <!-- Populated dynamically via JS -->
+                </tbody>
+            </table>
+
+            <!-- Invoice Summary Totals -->
+            <div class="order-details-totals" style="width: 320px; margin-left: auto;">
+                <div class="order-details-totals-line" style="padding: 6px 0;">
+                    <span>Subtotal</span>
+                    <span id="invoice-subtotal">₹0</span>
+                </div>
+                <div class="order-details-totals-line" id="invoice-discount-row" style="display: none; padding: 6px 0;">
+                    <span>Promo Discount (<span id="invoice-coupon-code">None</span>)</span>
+                    <span id="invoice-discount-amount" style="color: #D32F2F;">-₹0</span>
+                </div>
+                <div class="order-details-totals-line" style="padding: 6px 0;">
+                    <span>Shipping Charges</span>
+                    <span id="invoice-shipping">FREE</span>
+                </div>
+                <div class="order-details-totals-line grand" style="padding: 10px 0; border-top: 2px solid var(--primary);">
+                    <span>Total Amount Paid</span>
+                    <span id="invoice-total" style="font-size: 20px; font-weight: 800; color: var(--accent-dark);">₹0</span>
+                </div>
+            </div>
+
+            <!-- Footer Message -->
+            <footer class="invoice-footer">
+                <p style="font-weight: 600; color: var(--text-dark); margin-bottom: 4px;">Thank you for your business!</p>
+                <p>This is a computer-generated invoice receipt. For return policies or delivery assistance, please reach out to support.</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/common.js"></script>
+    <script src="../js/invoice.js"></script>
+</body>
+</html>

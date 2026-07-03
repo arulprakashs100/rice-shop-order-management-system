@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary - Golden Grain Rice Shop</title>
+    <!-- CSS imports -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/customer.css">
+</head>
+<body>
+
+    <!-- Header Navbar -->
+    <header class="navbar">
+        <a href="../index.html" class="logo-container" id="nav-logo-link">
+            <img src="../assets/logo.png" alt="Golden Grain Logo" class="logo-img">
+            <h1 class="logo-text">Golden<span>Grain</span></h1>
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="select-rice.html">Our Rice</a></li>
+                <li><a href="../owner/login.html">Owner Portal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        
+        <!-- Progress Tracker -->
+        <div class="progress-container">
+            <div class="progress-line">
+                <div class="progress-line-fill" style="width: 66.6%;"></div>
+            </div>
+            <div class="progress-step completed">
+                ✓
+                <div class="progress-step-label">Select Rice</div>
+            </div>
+            <div class="progress-step completed">
+                ✓
+                <div class="progress-step-label">Customer Details</div>
+            </div>
+            <div class="progress-step active">
+                3
+                <div class="progress-step-label">Order Summary</div>
+            </div>
+            <div class="progress-step">
+                4
+                <div class="progress-step-label">Success</div>
+            </div>
+        </div>
+
+        <div class="checkout-layout">
+            <!-- Left Column: Summary Details Cards -->
+            <section style="display: flex; flex-direction: column; gap: 24px;">
+                
+                <!-- Customer Details Summary -->
+                <div class="form-card" style="padding: 24px;">
+                    <h3 style="font-size: 18px; margin-bottom: 16px; border-bottom: 1.5px solid var(--border-color); padding-bottom: 8px;">Delivery Details</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 15px;">
+                        <div>
+                            <p style="color: var(--text-muted); font-weight: 500; margin-bottom: 4px;">Customer Name</p>
+                            <p id="summary-cust-name" style="font-weight: 600;"></p>
+                        </div>
+                        <div>
+                            <p style="color: var(--text-muted); font-weight: 500; margin-bottom: 4px;">Phone Number</p>
+                            <p id="summary-cust-phone" style="font-weight: 600;"></p>
+                        </div>
+                        <div style="grid-column: 1/-1;">
+                            <p style="color: var(--text-muted); font-weight: 500; margin-bottom: 4px;">Shipping Address</p>
+                            <p id="summary-cust-address" style="font-weight: 600;"></p>
+                        </div>
+                        <div>
+                            <p style="color: var(--text-muted); font-weight: 500; margin-bottom: 4px;">Payment Mode</p>
+                            <p id="summary-cust-payment" style="font-weight: 600;"></p>
+                        </div>
+                        <div>
+                            <p style="color: var(--text-muted); font-weight: 500; margin-bottom: 4px;">Estimated Delivery</p>
+                            <p style="color: var(--primary); font-weight: 600;">Within 2-3 Business Days</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product items detailed list -->
+                <div class="form-card" style="padding: 24px;">
+                    <h3 style="font-size: 18px; margin-bottom: 16px; border-bottom: 1.5px solid var(--border-color); padding-bottom: 8px;">Ordered Items</h3>
+                    <div id="summary-detailed-items-container">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Right Column: Coupon & Checkout Summary Card -->
+            <aside class="summary-card" style="padding: 24px;">
+                <h4>Payment Summary</h4>
+                
+                <!-- Coupon Input Form -->
+                <div class="coupon-section">
+                    <input type="text" id="coupon-code-input" class="coupon-input" placeholder="Promo code (e.g. RICE10)">
+                    <button class="btn btn-secondary" id="apply-coupon-btn" style="padding: 10px 18px; font-size: 14px;">Apply</button>
+                </div>
+                <div class="coupon-msg" id="coupon-feedback"></div>
+
+                <!-- Detailed Breakdown -->
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+                    <div class="cart-summary-line">
+                        <span>Bag Price Total</span>
+                        <span id="breakdown-subtotal">₹0</span>
+                    </div>
+                    <div class="cart-summary-line" id="discount-row" style="display: none;">
+                        <span>Promo Discount (<span id="discount-percentage">0%</span>)</span>
+                        <span id="breakdown-discount" style="color: #D32F2F;">-₹0</span>
+                    </div>
+                    <div class="cart-summary-line">
+                        <span>Shipping Charges</span>
+                        <span id="breakdown-shipping">FREE</span>
+                    </div>
+                    <div class="cart-summary-line total" style="margin-top: 12px; padding-top: 12px;">
+                        <span>Grand Total Payable</span>
+                        <span id="breakdown-total" style="font-size: 20px;">₹0</span>
+                    </div>
+                </div>
+
+                <!-- Final Place Order Actions -->
+                <button class="btn btn-primary" id="place-order-btn" style="width: 100%; padding: 14px; margin-bottom: 12px;">Place Order</button>
+                <a href="customer-details.html" class="btn btn-outline" style="width: 100%; padding: 10px;">Back to Delivery Details</a>
+            </aside>
+        </div>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="../js/common.js"></script>
+    <script src="../js/order-summary.js"></script>
+</body>
+</html>

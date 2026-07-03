@@ -1,0 +1,96 @@
+/* Print Stylesheet for Invoices */
+
+@media print {
+    /* Hide all elements that are not part of the invoice itself */
+    body, html {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        font-family: 'Outfit', -apple-system, sans-serif !important;
+        font-size: 12pt !important;
+        line-height: 1.4 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Hide Navigation, sidebars, buttons, and headers */
+    .navbar,
+    .owner-sidebar,
+    .footer,
+    footer,
+    .invoice-actions,
+    button,
+    .btn,
+    .back-btn,
+    .owner-profile {
+        display: none !important;
+    }
+
+    /* Expand the container to take full page width */
+    .owner-content,
+    .invoice-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+    }
+
+    /* Optimize layout for paper */
+    .invoice-header {
+        border-bottom: 2px solid #000000 !important;
+        padding-bottom: 20px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .invoice-from h2 {
+        color: #000000 !important;
+    }
+
+    /* Force tables to extend to full width */
+    table, .orders-table, .order-details-items-table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+    }
+
+    th {
+        border-bottom: 2px solid #000000 !important;
+        color: #000000 !important;
+        font-weight: bold !important;
+        background: #F4F6F4 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    td {
+        border-bottom: 1px solid #E2E8E2 !important;
+        padding: 8px 0 !important;
+    }
+
+    .price-col, .price-tag, .cart-item-total {
+        color: #000000 !important;
+        font-weight: bold !important;
+    }
+
+    .order-details-totals {
+        width: 250px !important;
+        float: right !important;
+    }
+
+    .order-details-totals-line.grand {
+        border-top: 2px solid #000000 !important;
+        color: #000000 !important;
+    }
+
+    /* Avoid page breaking in the middle of lists */
+    tr {
+        page-break-inside: avoid !important;
+    }
+
+    /* Custom print configurations */
+    @page {
+        size: A4 portrait;
+        margin: 1.5cm;
+    }
+}

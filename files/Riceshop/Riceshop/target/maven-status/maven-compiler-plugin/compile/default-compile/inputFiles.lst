@@ -1,0 +1,14 @@
+E:\files\Riceshop\Riceshop\src\main\java\com\riceshop\Riceshop\config\CorsConfig.java
+E:\files\Riceshop\Riceshop\src\main\java\com\riceshop\Riceshop\config\DatabaseSeeder.java
+E:\files\Riceshop\Riceshop\src\main\java\com\riceshop\Riceshop\controller\OrderController.java
+E:\files\Riceshop\Riceshop\src\main\java\com\riceshop\Riceshop\controller\OwnerController.java
+E:\files\Riceshop\Riceshop\src\main\java\com\riceshop\Riceshop\controller\ProductController.java
+E:\files\Riceshop\Riceshop\src\main\java\com\riceshop\Riceshop\model\CustomerDetails.java
+E:\files\Riceshop\Riceshop\src\main\java\com\riceshop\Riceshop\model\Order.java
+E:\files\Riceshop\Riceshop\src\main\java\com\riceshop\Riceshop\model\OrderItem.java
+E:\files\Riceshop\Riceshop\src\main\java\com\riceshop\Riceshop\model\Owner.java
+E:\files\Riceshop\Riceshop\src\main\java\com\riceshop\Riceshop\model\Product.java
+E:\files\Riceshop\Riceshop\src\main\java\com\riceshop\Riceshop\repository\OrderRepository.java
+E:\files\Riceshop\Riceshop\src\main\java\com\riceshop\Riceshop\repository\OwnerRepository.java
+E:\files\Riceshop\Riceshop\src\main\java\com\riceshop\Riceshop\repository\ProductRepository.java
+E:\files\Riceshop\Riceshop\src\main\java\com\riceshop\Riceshop\RiceshopApplication.java

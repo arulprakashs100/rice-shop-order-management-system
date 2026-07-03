@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Admin Access - Golden Grain Rice Shop</title>
+    <!-- CSS imports -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/owner.css">
+    <style>
+        /* Tab switcher styles */
+        .login-tabs {
+            display: flex;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        .login-tab-btn {
+            flex: 1;
+            padding: 12px;
+            background: none;
+            border: none;
+            font-family: var(--font);
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .login-tab-btn:hover {
+            color: var(--primary);
+        }
+
+        .login-tab-btn.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+            margin-bottom: -2.5px;
+        }
+
+        /* Form display logic */
+        .auth-form-panel {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .auth-form-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="login-body">
+
+    <!-- Glassmorphic login box -->
+    <main class="login-card">
+        <div class="login-logo">
+            <img src="../assets/logo.png" alt="Golden Grain Logo" class="logo-img" style="height: 40px;">
+            <h2 class="logo-text" style="color: var(--primary);">Golden<span>Grain</span></h2>
+        </div>
+        <p class="login-title" style="margin-bottom: 20px;">Owner Administration Console</p>
+
+        <!-- Tab switches -->
+        <div class="login-tabs">
+            <button class="login-tab-btn active" id="tab-login-trigger" data-target="login-panel">Sign In</button>
+            <button class="login-tab-btn" id="tab-register-trigger" data-target="register-panel">Register</button>
+        </div>
+
+        <!-- Notification banner for errors -->
+        <div class="login-error-msg" id="auth-error-banner"></div>
+
+        <!-- Success Notification banner for registration -->
+        <div class="login-error-msg" id="auth-success-banner" style="background-color: rgba(46, 125, 50, 0.1); color: var(--primary-dark); border-color: rgba(46, 125, 50, 0.2);">
+            <strong>Registration Successful!</strong> You can now log in using your Store Name and Password.
+        </div>
+
+        <!-- PANEL 1: Login Form -->
+        <div class="auth-form-panel active" id="login-panel">
+            <form id="owner-login-form">
+                <div class="form-group" style="text-align: left;">
+                    <label for="login-store-name">Owner Store Name</label>
+                    <input type="text" id="login-store-name" class="form-control" placeholder="Enter registered store name" required autocomplete="username">
+                </div>
+
+                <div class="form-group" style="text-align: left; margin-bottom: 24px;">
+                    <label for="login-password">Owner Password</label>
+                    <input type="password" id="login-password" class="form-control" placeholder="Enter owner password" required autocomplete="current-password">
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; margin-bottom: 20px;">Sign In to Store</button>
+            </form>
+        </div>
+
+        <!-- PANEL 2: Registration Form -->
+        <div class="auth-form-panel" id="register-panel">
+            <form id="owner-register-form">
+                <div class="form-group" style="text-align: left;">
+                    <label for="register-name">Owner Name *</label>
+                    <input type="text" id="register-name" class="form-control" placeholder="Enter owner full name" required>
+                </div>
+
+                <div class="form-group" style="text-align: left;">
+                    <label for="register-store-name">Owner Store Name *</label>
+                    <input type="text" id="register-store-name" class="form-control" placeholder="Enter store name (e.g. Arul Organics)" required>
+                </div>
+
+                <div class="form-group" style="text-align: left; margin-bottom: 24px;">
+                    <label for="register-password">Owner Password *</label>
+                    <input type="password" id="register-password" class="form-control" placeholder="Set password for your console" required autocomplete="new-password">
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; margin-bottom: 20px;">Register Store Owner</button>
+            </form>
+        </div>
+
+        <a href="../index.html" class="btn btn-outline" style="width: 100%; padding: 10px;">Return to Customer Shop</a>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../js/common.js"></script>
+    <script src="../js/login.js"></script>
+</body>
+</html>

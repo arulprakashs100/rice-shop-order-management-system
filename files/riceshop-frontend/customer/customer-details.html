@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Details - Golden Grain Rice Shop</title>
+    <!-- CSS imports -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/customer.css">
+</head>
+<body>
+
+    <!-- Header Navbar -->
+    <header class="navbar">
+        <a href="../index.html" class="logo-container" id="nav-logo-link">
+            <img src="../assets/logo.png" alt="Golden Grain Logo" class="logo-img">
+            <h1 class="logo-text">Golden<span>Grain</span></h1>
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="select-rice.html">Our Rice</a></li>
+                <li><a href="../owner/login.html">Owner Portal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        
+        <!-- Progress Tracker -->
+        <div class="progress-container">
+            <div class="progress-line">
+                <div class="progress-line-fill" style="width: 33.3%;"></div>
+            </div>
+            <div class="progress-step completed">
+                ✓
+                <div class="progress-step-label">Select Rice</div>
+            </div>
+            <div class="progress-step active">
+                2
+                <div class="progress-step-label">Customer Details</div>
+            </div>
+            <div class="progress-step">
+                3
+                <div class="progress-step-label">Order Summary</div>
+            </div>
+            <div class="progress-step">
+                4
+                <div class="progress-step-label">Success</div>
+            </div>
+        </div>
+
+        <div class="checkout-layout">
+            <!-- Left Side: Address Details Form -->
+            <section class="form-card">
+                <h3>Delivery Address & Contact</h3>
+                <form id="details-form">
+                    <div class="form-group">
+                        <label for="customer-name">Full Name *</label>
+                        <input type="text" id="customer-name" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customer-phone">Mobile Number *</label>
+                        <input type="tel" id="customer-phone" class="form-control" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+                        <span style="font-size: 11px; color: var(--text-muted); display: block; margin-top: 4px;">We'll text you delivery updates on this number.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customer-address">Complete Delivery Address *</label>
+                        <textarea id="customer-address" class="form-control" rows="4" placeholder="House/Flat No., Building Name, Street Address, Area, Landmark, City, State & PIN Code" style="resize: none;" required></textarea>
+                    </div>
+
+                    <h3 style="margin-top: 40px; margin-bottom: 20px;">Payment Method</h3>
+                    <div class="payment-methods">
+                        <!-- UPI -->
+                        <div class="payment-card selected" id="upi-card">
+                            <input type="radio" name="payment-method" id="pay-upi" value="UPI" checked>
+                            <div class="payment-icon-img" style="font-size: 28px; line-height: 1;">📱</div>
+                            <span>UPI Apps</span>
+                        </div>
+
+                        <!-- Card -->
+                        <div class="payment-card" id="card-card">
+                            <input type="radio" name="payment-method" id="pay-card" value="Card">
+                            <div class="payment-icon-img" style="font-size: 28px; line-height: 1;">💳</div>
+                            <span>Credit/Debit Card</span>
+                        </div>
+
+                        <!-- Cash on Delivery -->
+                        <div class="payment-card" id="cod-card">
+                            <input type="radio" name="payment-method" id="pay-cod" value="Cash on Delivery">
+                            <div class="payment-icon-img" style="font-size: 28px; line-height: 1;">💵</div>
+                            <span>Cash on Delivery</span>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 16px; margin-top: 40px;">
+                        <a href="select-rice.html" class="btn btn-secondary" style="flex: 1;">Go Back to Shop</a>
+                        <button type="submit" class="btn btn-primary" style="flex: 1.5; padding: 14px;">Review & Place Order</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Right Side: Order Summary Card Overview -->
+            <aside class="summary-card">
+                <h4>Order Overview</h4>
+                <div class="summary-items" id="summary-items-list">
+                    <!-- Loaded dynamically -->
+                </div>
+
+                <div style="border-top: 1.5px solid var(--border-color); padding-top: 16px; margin-top: 16px;">
+                    <div class="cart-summary-line">
+                        <span>Items Price</span>
+                        <span id="summary-subtotal">₹0</span>
+                    </div>
+                    <div class="cart-summary-line">
+                        <span>Estimated Shipping</span>
+                        <span id="summary-shipping">FREE</span>
+                    </div>
+                    <div class="cart-summary-line total" style="margin-top: 12px; padding-top: 12px;">
+                        <span>Total Price</span>
+                        <span id="summary-total" style="font-size: 20px;">₹0</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="../js/common.js"></script>
+    <script src="../js/customer-details.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Placed Successfully - Golden Grain Rice Shop</title>
+    <!-- CSS imports -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/customer.css">
+</head>
+<body>
+
+    <!-- Header Navbar -->
+    <header class="navbar">
+        <a href="../index.html" class="logo-container" id="nav-logo-link">
+            <img src="../assets/logo.png" alt="Golden Grain Logo" class="logo-img">
+            <h1 class="logo-text">Golden<span>Grain</span></h1>
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="select-rice.html">Our Rice</a></li>
+                <li><a href="../owner/login.html">Owner Portal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        
+        <!-- Progress Tracker -->
+        <div class="progress-container">
+            <div class="progress-line">
+                <div class="progress-line-fill" style="width: 100%;"></div>
+            </div>
+            <div class="progress-step completed">
+                ✓
+                <div class="progress-step-label">Select Rice</div>
+            </div>
+            <div class="progress-step completed">
+                ✓
+                <div class="progress-step-label">Customer Details</div>
+            </div>
+            <div class="progress-step completed">
+                ✓
+                <div class="progress-step-label">Order Summary</div>
+            </div>
+            <div class="progress-step completed">
+                ✓
+                <div class="progress-step-label">Success</div>
+            </div>
+        </div>
+
+        <!-- Success Message Content -->
+        <section class="success-card">
+            <div class="success-icon-container">✓</div>
+            <h2 class="success-title">Order Confirmed!</h2>
+            <p class="success-desc">Thank you for shopping with Golden Grain! Your order has been registered and is currently being processed by our packaging team.</p>
+
+            <!-- Order Summary Details Box -->
+            <div class="order-info-box" id="success-order-details-box" style="display: none;">
+                <div class="order-info-row">
+                    <span>Order Tracking ID</span>
+                    <span id="success-order-id" style="color: var(--primary-dark); font-weight: 700;">GS-XXXXX</span>
+                </div>
+                <div class="order-info-row">
+                    <span>Payment Mode</span>
+                    <span id="success-payment-method">UPI</span>
+                </div>
+                <div class="order-info-row">
+                    <span>Total Amount Charged</span>
+                    <span id="success-total-price" style="color: var(--accent-dark); font-weight: 700;">₹0</span>
+                </div>
+                <div class="order-info-row" style="flex-direction: column; align-items: flex-start; gap: 4px; border-top: 1px solid var(--border-color); padding-top: 10px; margin-top: 10px;">
+                    <span>Delivery Address</span>
+                    <span id="success-address" style="font-weight: normal; font-size: 13.5px; line-height: 1.4; color: var(--text-muted); margin-top: 2px;"></span>
+                </div>
+            </div>
+
+            <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 32px;">A notification with tracking updates has been simulated and sent to your registered mobile number.</p>
+
+            <div class="order-success-actions">
+                <a href="select-rice.html" class="btn btn-primary" id="continue-shopping-btn">Shop More Rice</a>
+                <button class="btn btn-secondary" id="view-invoice-btn">View & Print Invoice</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="../js/common.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const orderId = localStorage.getItem("riceshop_last_order_id");
+            if (!orderId) {
+                // If accessed directly without placing an order, redirect back to shop
+                window.location.href = "select-rice.html";
+                return;
+            }
+
+            // Fetch order by ID asynchronously from PostgreSQL
+            getOrderById(orderId).then(order => {
+                if (order) {
+                    // Populate invoice info
+                    document.getElementById("success-order-id").textContent = order.id;
+                    document.getElementById("success-payment-method").textContent = order.paymentMethod;
+                    document.getElementById("success-total-price").textContent = formatPrice(order.total);
+                    document.getElementById("success-address").textContent = order.customer.address;
+                    document.getElementById("success-order-details-box").style.display = "block";
+
+                    // Bind invoice viewer link
+                    document.getElementById("view-invoice-btn").addEventListener("click", () => {
+                        window.open(`../owner/invoice.html?id=${order.id}`, '_blank');
+                    });
+                } else {
+                    // Fallback
+                    document.getElementById("success-order-id").textContent = orderId;
+                    document.getElementById("success-order-details-box").style.display = "block";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
